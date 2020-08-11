@@ -1,4 +1,4 @@
-package com.bezkoder.springgraphql.mysql.repository;
+package com.springgraphql.challenge.repository;
 
 import org.junit.Assert;
 import org.junit.Test;
