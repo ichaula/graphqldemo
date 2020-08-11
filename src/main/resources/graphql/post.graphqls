@@ -1,0 +1,18 @@
+type Post {
+        id: Int
+        user: User
+        title: String
+        body: String
+        comments: [Comment]
+}
+
+# Root
+extend type Query {
+	 getAllPost: [Post]!
+	 getPostById(id: Int!) : Post!
+}
+
+extend type Mutation {
+	deletePost(id: Int!): Boolean
+	updatePost(id: Int!, title: String, body: String): Post!
+}

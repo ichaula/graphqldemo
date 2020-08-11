@@ -1,0 +1,24 @@
+type Comment {
+        id: Int
+		post: Post
+		name: String
+		email: String
+		body: String
+}
+
+extend type Query{
+	getAllComment: [Comment]
+	getCommentById(id: Int!) : Comment
+	getCommentFromPost(id: Int!): [Comment]
+	
+}
+
+extend type Mutation{
+	deleteComment(id: Int!): Boolean
+	updateComment(id: Int!, name: String, email: String, body: String): Comment
+}
+
+
+
+
+

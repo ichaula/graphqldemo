@@ -1,31 +1,24 @@
-# Spring Boot + GraphQL 
+
+#Get All Users
+query{
+  getAllUser{
+    id 
+    name
+    username
+    email
+    phone
+    website
+    address{
+    	street 
+    	suite 
+    	city 
+      zipcode
+    }
+  }
+ }
 
 
-# 1. Clone Project, cd to root project directory and run these two Docker commands
-```
-docker image build -t graphql-springboot .
-docker container run -p 8080:8080 graphql-springboot
-```
-
-# Alternative: You can run application from terminal if maven is installed:
-```
-mvn clean install
-mvn spring-boot:run
-```
-
-
-# You can test following query from GraphQL Playground
-```
-http://localhost:8080/apis/graphql
-```
-
-
-#### Download GraphQL Playground to Test GraphQL Query
-
-## USER QUERY
-
-##### Get User by Id
-```json
+#Get User By Id
 query{
   getUserById(id:1){
     id 
@@ -42,49 +35,20 @@ query{
     }
   }
 }
-```
 
-##### Get All Users
-```json
-query{
-  getAllUser{
-    id 
-    name
-    username
-    email
-    phone
-    website
-    address{
-    	street 
-    	suite 
-    	city 
-      zipcode
-    }
-  }
-}
-```
 
-##### Delete User
-```json
+#Delete User
 mutation{
   deleteUser(id:1)  
 }
-```
 
-
-
-##### Update User
-```json
+#Update User
 mutation{
   updateUser(id: 1, username: "updatedUser")  
 }
-```
 
 
-# POST QUERY
-
-##### Get All Post
-```json
+#Get all Post
 query{
   getAllPost{
     id
@@ -113,10 +77,8 @@ query{
     }
   }
 }
-```
 
-##### Get Post by Id
-```json
+#Get all Post
 query{
   getPostById(id:1){
     id
@@ -144,11 +106,73 @@ query{
     }
   }
 }
-```
+
+#Update User by Id
+mutation{
+  updateUser(id: 1, email:"updated@email.com"){
+  id
+      name
+      username
+      email
+      phone
+      website
+      address{
+        street 
+    		suite 
+    		city 
+      	zipcode
+      }
+  }
+}
 
 
-##### Update Post
-```json
+#Get Post by Id
+query{
+  getPostById(id:1){
+    id
+    user{
+      id
+      name
+      username
+      email
+      phone
+      website
+      address{
+        street 
+    		suite 
+    		city 
+      	zipcode
+      }
+    }
+    title
+    body
+    comments{
+      id
+      name
+      email
+      body
+    }
+  }
+}
+
+#Get Comments from Post
+query{
+  getCommentFromPost(id: 1){
+      id
+      name
+      email
+      body   
+  }
+}
+
+
+#Delete Post
+mutation{
+  deletePost(id:1)
+}
+
+
+#Update Post
 mutation{
   updatePost(id:1, title: "Updated Title"){
     id
@@ -176,21 +200,9 @@ mutation{
     }
   }
 }
-```
 
 
-##### Delete Post
-```json
-mutation{
-  deletePost(id:1)
-}
-```
-
-
-# COMMENT QUERY
-
-##### Get All Comments
-```json
+#Get All Comments
 query{
   getAllComment{
     id
@@ -199,11 +211,9 @@ query{
     body
   }
 }
-```
 
 
-##### Get Comment by Id
-```json
+#Get Comment by Id
 query{
   getCommentById(id:1){
     id
@@ -212,22 +222,8 @@ query{
     body
   }
 }
-```
 
-##### Get Comments from Post
-```json
-query{
-  getCommentFromPost(id: 1){
-      id
-      name
-      email
-      body   
-  }
-}
-```
-
-##### Update Comment
-```json
+#Update Comment
 mutation{
   updateComment(id: 1, email:"updated@email.com"){
   id
@@ -236,15 +232,24 @@ mutation{
   body
   }
 }
-```
 
 
-##### Delete Comment
-```json
-mutation{
-  deleteComment(id: 1)    
-}
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
